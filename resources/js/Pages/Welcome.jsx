@@ -136,7 +136,56 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                         </div>
                     ))}
                 </div>
+
+                 <div className="flex flex-row p-8 justify-between">
+                    <div className="text-xl font-bold">Top Instructors</div>
+                    <div className="text-lg text-[#3B82F6]">See all</div>
+                </div>
+
+                <div className="flex flex-col md:flex-row gap-3 justify-between p-8">
+                    {[...Array(5)].map((_, i) => (
+                        <div
+                            key={i}
+                            className="w-full md:w-1/6 rounded-xl border aspect-square items-center justify-between flex flex-col  border-[#E2E8F0]"
+                        >
+                                                            <div className="w-full flex items-center justify-center p-4">
+
+                            <img
+                                className="object-cover w-full  rounded-t-xl  h-48"
+                                src="Rectangle 1136.png"
+                            />
+                            </div>
+                                <div className="text-2xl font-bold">
+                                    Lecturer Name
+                                </div>
+                                <div className="text-[#334155] text-lg">
+                                    Subject
+                                </div>
+                                <div className="w-full p-4">
+                                <div className="text-xl border-t-2  w-full border-[#E2E8F0] flex justify-between mb-3 font-bold">
+                                 <div className="font-bold mt-5 flex flex-row" > 
+                                    <StarIcon className="text-[#EAB308] w-8" />
+                                    Rating
+                                 </div>
+                                 <div className="font-bold mt-5 flex flex-row" > 
+                                  Subscription
+                                 </div>
+                                </div>
+                                </div>
+                            </div>
+                    ))}
+                </div>
+                        <div className="bg-white  min-h-screen flex flex-col">
+ 
+               <div className="w-full p-4 flex flex-col md:flex-row bg-[#F8FAFC] ">
+                  <div className="flex flex-row px-4 w-full justify-between">
+                    <div className="text-xl font-bold" >What Our Customer Say About Us</div>
+                                            <button className="rounded-xl text-xl w-16 h-8 text-white bg-[#94A3B8]"> {'<'} </button>
             </div>
+
+                  </div>
+                </div>
+                </div>
         </>
     );
 }
