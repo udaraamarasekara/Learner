@@ -121,9 +121,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                                 <div className="text-[#EAB308] mb-3 flex flex-row text-lg">
                                     {[...Array(5)].map((_, i) => (
-                                        <StarIcon key={i} className="w-8" />
+                                        <StarIcon key={i} className="w-8 sm:w-6" />
                                     ))}
-                                    <div className="text-[#334155] font-bold">
+                                    <div className="text-[#334155] sm:text-md font-bold">
                                         (Rating)
                                     </div>
                                 </div>
