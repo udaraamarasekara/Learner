@@ -4,8 +4,8 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
             <Head title="Welcome" />
-            <div className="bg-white  min-h-screen flex flex-col">
-                <div className="bg-white p-8 md:h-screen flex flex-col-reverse md:flex-row">
+            <div className="bg-white  min-h-full flex flex-col">
+                <div className="bg-white p-8 md:h-full flex flex-col-reverse md:flex-row">
                     <div className="relative flex md:min-h-full flex-col w-full md:w-1/2 md:flex-row items-center  md:justify-center">
                         <div className="flex flex-col">
                             <div className="text-2xl md:text-8xl my-3 text-gray-900 font-bold">
@@ -74,7 +74,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     </div>
                 </div>
             </div>
-            <div className="bg-white  md:h-screen flex flex-col">
+            <div className="bg-white  md:h-full flex flex-col">
                 <div className="flex flex-row p-8 justify-between">
                     <div className="text-xl font-bold">Top Categories</div>
                     <div className="text-lg text-[#3B82F6]">See all</div>
@@ -131,13 +131,15 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     <div>hours</div> <div>lectures</div>
                                     <div> difficulity</div>
                                 </div>
-                                <div className="text-xl mb-3 font-bold">FEE</div>
+                                <div className="text-xl mb-3 font-bold">
+                                    FEE
+                                </div>
                             </div>
                         </div>
                     ))}
                 </div>
 
-                 <div className="flex flex-row p-8 justify-between">
+                <div className="flex flex-row p-8 justify-between">
                     <div className="text-xl font-bold">Top Instructors</div>
                     <div className="text-lg text-[#3B82F6]">See all</div>
                 </div>
@@ -148,44 +150,101 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             key={i}
                             className="w-full md:w-1/6 rounded-xl border aspect-square items-center justify-between flex flex-col  border-[#E2E8F0]"
                         >
-                                                            <div className="w-full flex items-center justify-center p-4">
-
-                            <img
-                                className="object-cover w-full  rounded-t-xl  h-48"
-                                src="Rectangle 1136.png"
-                            />
+                            <div className="w-full flex items-center justify-center p-4">
+                                <img
+                                    className="object-cover w-full  rounded-t-xl  h-48"
+                                    src="Rectangle 1136.png"
+                                />
                             </div>
-                                <div className="text-2xl font-bold">
-                                    Lecturer Name
-                                </div>
-                                <div className="text-[#334155] text-lg">
-                                    Subject
-                                </div>
-                                <div className="w-full p-4">
+                            <div className="text-2xl font-bold">
+                                Lecturer Name
+                            </div>
+                            <div className="text-[#334155] text-lg">
+                                Subject
+                            </div>
+                            <div className="w-full p-4">
                                 <div className="text-xl border-t-2  w-full border-[#E2E8F0] flex justify-between mb-3 font-bold">
-                                 <div className="font-bold mt-5 flex flex-row" > 
-                                    <StarIcon className="text-[#EAB308] w-8" />
-                                    Rating
-                                 </div>
-                                 <div className="font-bold mt-5 flex flex-row" > 
-                                  Subscription
-                                 </div>
-                                </div>
+                                    <div className="font-bold mt-5 flex flex-row">
+                                        <StarIcon className="text-[#EAB308] w-8" />
+                                        Rating
+                                    </div>
+                                    <div className="font-bold mt-5 flex flex-row">
+                                        Subscription
+                                    </div>
                                 </div>
                             </div>
+                        </div>
                     ))}
                 </div>
-                        <div className="bg-white  min-h-screen flex flex-col">
- 
-               <div className="w-full p-4 flex flex-col md:flex-row bg-[#F8FAFC] ">
-                  <div className="flex flex-row px-4 w-full justify-between">
-                    <div className="text-xl font-bold" >What Our Customer Say About Us</div>
-                                            <button className="rounded-xl text-xl w-16 h-8 text-white bg-[#94A3B8]"> {'<'} </button>
+                <div className="bg-[#F8FAFC]  min-h-full flex flex-col">
+                    <div className="w-full p-4 flex flex-col md:flex-row  ">
+                        <div className="flex flex-row px-4 w-full justify-between">
+                            <div className="text-xl font-bold">
+                                What Our Customer Say About Us
+                            </div>
+                            <div className="flex flex-row gap-5">
+                                <button className="rounded-xl text-xl w-16 h-8 text-white bg-[#94A3B8]">
+                                    {"<"}
+                                </button>
+                                <button className="rounded-xl text-xl w-16 h-8 text-white bg-[#94A3B8]">
+                                    {">"}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="flex flex-col md:flex-row px-4 w-full max-h-full max-w-screen mb-5 overflow-auto hide-scrollbar justify-between">
+                        {[...Array(6)].map((_, i) => (
+                            <div className="w-1/5 min-w-[360px]  md:min-w-[610px] mx-4 mb-4 p-4 border flex flex-col justify-center bg-white border-[#E2E8F0] rounded-xl">
+                                <div className="text-4xl text-[#3B82F6]">
+                                    {" "}
+                                    "{" "}
+                                </div>
+                                <div className="text-lg">
+                                    "Byway's tech courses are top-notch! As
+                                    someone who's always looking to stay ahead
+                                    in the rapidly evolving tech world, I
+                                    appreciate the up-to-date content and
+                                    engaging multimedia.
+                                </div>
+                                <div className="flex flex-row items-center">
+                                    <img
+                                        className="object-cover w-12  rounded-full  h-12"
+                                        src="Rectangle 1136.png"
+                                    />
+                                    <div className="flex mt-3 flex-col">
+                                        <div className="mx-2 font-bold">
+                                            User Role
+                                        </div>
+                                        <div className="mx-2 ">User Name</div>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
             </div>
-
-                  </div>
+            <div className="bg-white  md:h-full flex flex-col">
+                <div className="w-full  p-4 flex flex-col md:flex-row items-center justify-between">
+                    <img src="image 10.png" className="w-1/5 mx-4" />
+                    <div className="flex flex-col mx-4 w-1/2 justify-start">
+                         <div className="text-2xl font-bold"> Become an Instructor</div>
+                         <div className="text-xl">
+                            Instructors from around the world teach millions of students on Byway. We provide the tools and skills to teach what you love.
+                         </div>
+                    </div>
                 </div>
+            </div>
+             <div className="bg-white  md:h-full flex flex-col">
+                <div className="w-full  p-4 flex flex-col-reverse md:flex-row items-center justify-between">
+                    <div className="flex flex-col mx-4 w-1/2 justify-start">
+                         <div className="text-2xl font-bold">Transform your life through education</div>
+                         <div className="text-xl">
+Learners around the world are launching new careers, advancing in their fields, and enriching their lives.                         </div>
+                    </div>
+                    <img src="image.png" className="w-1/5 mx-4" />
+                    
                 </div>
+            </div>
         </>
     );
 }
