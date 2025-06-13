@@ -1,5 +1,6 @@
 import { Head, Link } from "@inertiajs/react";
 import { StarIcon } from "@heroicons/react/24/solid";
+import BottomNavBar from "@/Components/BottomNavBar";
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
@@ -86,7 +87,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             key={i}
                             className="w-full md:w-1/6 rounded-xl border aspect-square items-center justify-center flex flex-col  border-[#E2E8F0]"
                         >
-                            <div className="w-24 h-24 flex items-center justify-center text-3xl font-extrabold text-[#3B82F6] rounded-full bg-[#E0F2FE]">
+                            <div className="w-24 h-24 sm:h-16 sm:w-16 flex items-center justify-center text-3xl font-extrabold text-[#3B82F6] rounded-full bg-[#E0F2FE]">
                                 d
                             </div>
                             <div className="text-2xl font-bold">Subject</div>
@@ -101,11 +102,11 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     <div className="text-lg text-[#3B82F6]">See all</div>
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-3 justify-between p-8">
+                <div className="flex flex-col md:flex-row gap-3 overflow-auto justify-between p-8">
                     {[...Array(5)].map((_, i) => (
                         <div
                             key={i}
-                            className="w-full md:w-1/6 rounded-xl border aspect-square items-start justify-between flex flex-col  border-[#E2E8F0]"
+                            className="w-full md:w-1/6 rounded-xl min-w-64  border aspect-square items-start justify-between flex flex-col  border-[#E2E8F0]"
                         >
                             <img
                                 className="object-cover w-full rounded-t-xl  h-48"
@@ -121,9 +122,9 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
 
                                 <div className="text-[#EAB308] mb-3 flex flex-row text-lg">
                                     {[...Array(5)].map((_, i) => (
-                                        <StarIcon key={i} className="w-8 sm:w-6" />
+                                        <StarIcon key={i} className="w-8" />
                                     ))}
-                                    <div className="text-[#334155] sm:text-md font-bold">
+                                    <div className="text-[#334155] font-bold">
                                         (Rating)
                                     </div>
                                 </div>
@@ -144,11 +145,11 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     <div className="text-lg text-[#3B82F6]">See all</div>
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-3 justify-between p-8">
+                <div className="flex flex-col md:flex-row gap-3 overflow-auto justify-between p-8">
                     {[...Array(5)].map((_, i) => (
                         <div
                             key={i}
-                            className="w-full md:w-1/6 rounded-xl border aspect-square items-center justify-between flex flex-col  border-[#E2E8F0]"
+                            className="w-full min-w-64 md:w-1/6 rounded-xl border aspect-square items-center justify-between flex flex-col  border-[#E2E8F0]"
                         >
                             <div className="w-full flex items-center justify-center p-4">
                                 <img
@@ -183,10 +184,10 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 What Our Customer Say About Us
                             </div>
                             <div className="flex flex-row gap-5">
-                                <button className="rounded-xl text-xl w-16 h-8 text-white bg-[#94A3B8]">
+                                <button className="rounded-xl sm:hidden md:block text-xl w-16 h-8 text-white bg-[#94A3B8]">
                                     {"<"}
                                 </button>
-                                <button className="rounded-xl text-xl w-16 h-8 text-white bg-[#94A3B8]">
+                                <button className="rounded-xl sm:hidden md:block text-xl w-16 h-8 text-white bg-[#94A3B8]">
                                     {">"}
                                 </button>
                             </div>
@@ -226,25 +227,35 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
             <div className="bg-white  md:h-full flex flex-col">
                 <div className="w-full  p-4 flex flex-col md:flex-row items-center justify-between">
                     <img src="image 10.png" className="w-1/5 mx-4" />
-                    <div className="flex flex-col mx-4 w-1/2 justify-start">
-                         <div className="text-2xl font-bold"> Become an Instructor</div>
-                         <div className="text-xl">
-                            Instructors from around the world teach millions of students on Byway. We provide the tools and skills to teach what you love.
-                         </div>
+                    <div className="flex flex-col mx-4 md:w-1/2 justify-start">
+                        <div className="text-2xl font-bold">
+                            {" "}
+                            Become an Instructor
+                        </div>
+                        <div className="text-xl">
+                            Instructors from around the world teach millions of
+                            students on Byway. We provide the tools and skills
+                            to teach what you love.
+                        </div>
                     </div>
                 </div>
             </div>
-             <div className="bg-white  md:h-full flex flex-col">
+            <div className="bg-white  md:h-full flex flex-col">
                 <div className="w-full  p-4 flex flex-col-reverse md:flex-row items-center justify-between">
-                    <div className="flex flex-col mx-4 w-1/2 justify-start">
-                         <div className="text-2xl font-bold">Transform your life through education</div>
-                         <div className="text-xl">
-Learners around the world are launching new careers, advancing in their fields, and enriching their lives.                         </div>
+                    <div className="flex flex-col mx-4 md:w-1/2 justify-start">
+                        <div className="text-2xl font-bold">
+                            Transform your life through education
+                        </div>
+                        <div className="text-xl">
+                            Learners around the world are launching new careers,
+                            advancing in their fields, and enriching their
+                            lives.{" "}
+                        </div>
                     </div>
                     <img src="image.png" className="w-1/5 mx-4" />
-                    
                 </div>
             </div>
+            <BottomNavBar/>
         </>
     );
 }
