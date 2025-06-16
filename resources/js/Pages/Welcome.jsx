@@ -1,6 +1,7 @@
 import { Head, Link } from "@inertiajs/react";
-import { StarIcon } from "@heroicons/react/24/solid";
+import { ArrowRightIcon, StarIcon } from "@heroicons/react/24/solid";
 import BottomNavBar from "@/Components/BottomNavBar";
+import PrimaryButton from "@/Components/PrimaryButton";
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
@@ -237,6 +238,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             students on Byway. We provide the tools and skills
                             to teach what you love.
                         </div>
+                        <PrimaryButton className="w-max rounded-lg">Start your Instructor journey <ArrowRightIcon className="w-8"/></PrimaryButton>
                     </div>
                 </div>
             </div>
@@ -251,6 +253,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             advancing in their fields, and enriching their
                             lives.{" "}
                         </div>
+                                                <PrimaryButton className="w-max rounded-lg">Checkout Courses <ArrowRightIcon className="w-8"/></PrimaryButton>
                     </div>
                     <img src="image.png" className="w-1/5 mx-4" />
                 </div>
