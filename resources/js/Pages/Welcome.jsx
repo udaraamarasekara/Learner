@@ -2,6 +2,7 @@ import { Head, Link } from "@inertiajs/react";
 import { ArrowRightIcon, StarIcon } from "@heroicons/react/24/solid";
 import BottomNavBar from "@/Components/BottomNavBar";
 import PrimaryButton from "@/Components/PrimaryButton";
+import { router } from "@inertiajs/react";
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
@@ -19,7 +20,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 personal and professional growth, and we're here
                                 to guide you on your journey to success.
                             </div>
-                            <button className="bg-[#3B82F6] text-white p-5 md:w-1/3 w-full rounded-md">
+                            <button onClick={() => router.visit("/login")} className="bg-[#3B82F6] text-white p-5 md:w-1/3 w-full rounded-md">
                                 Start your instructor journey
                             </button>
                         </div>
@@ -196,7 +197,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     </div>
                     <div className="flex flex-col md:flex-row px-4 w-full max-h-full max-w-screen mb-5 overflow-auto hide-scrollbar justify-between">
                         {[...Array(6)].map((_, i) => (
-                            <div className="w-1/5 min-w-[360px]  md:min-w-[610px] mx-4 mb-4 p-4 border flex flex-col justify-center bg-white border-[#E2E8F0] rounded-xl">
+                            <div key={i} className="w-1/5 min-w-[360px]  md:min-w-[610px] mx-4 mb-4 p-4 border flex flex-col justify-center bg-white border-[#E2E8F0] rounded-xl">
                                 <div className="text-4xl text-[#3B82F6]">
                                     {" "}
                                     "{" "}
@@ -238,7 +239,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             students on Byway. We provide the tools and skills
                             to teach what you love.
                         </div>
-                        <PrimaryButton className="w-max rounded-lg">Start your Instructor journey <ArrowRightIcon className="w-8"/></PrimaryButton>
+                        <PrimaryButton onClick={() => router.visit("/login")} className="w-max rounded-lg">Start your Instructor journey <ArrowRightIcon className="w-8"/></PrimaryButton>
                     </div>
                 </div>
             </div>
@@ -253,7 +254,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             advancing in their fields, and enriching their
                             lives.{" "}
                         </div>
-                                                <PrimaryButton className="w-max rounded-lg">Checkout Courses <ArrowRightIcon className="w-8"/></PrimaryButton>
+                                                <PrimaryButton onClick={() => router.visit("/courses")} className="w-max rounded-lg">Checkout Courses <ArrowRightIcon className="w-8"/></PrimaryButton>
                     </div>
                     <img src="image.png" className="w-1/5 mx-4" />
                 </div>

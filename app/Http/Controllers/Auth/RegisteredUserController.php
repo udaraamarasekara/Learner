@@ -47,7 +47,7 @@ class RegisteredUserController extends Controller
             'user_name' => $request->user_name,
             'role' => $request->role,
             'whatsapp' => $request->whatsapp,
-            'is_approved' => $request->is_approved,
+            'is_approved' => false,
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);

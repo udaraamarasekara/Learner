@@ -7,6 +7,7 @@ import { Head, Link, useForm } from "@inertiajs/react";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import ErrorMessagePopup from "@/Components/ErrorMessagePopup";
 import { useState } from "react";
+import { router } from "@inertiajs/react";
 export default function Register() {
     const { data, setData, post, processing, reset } = useForm({
         first_name:"",
@@ -23,16 +24,18 @@ export default function Register() {
     const submit = (e) => {
         e.preventDefault();
 
-        post(route("login"), {
+        post(route("register"), {
             onFinish: () => reset("password", "password_confirmation"),
-            onError:(error)=>{setError(error)}
+            onError:(error)=>{
+                console.log(error)
+                setError(Object.values(error)[0])}
         });
     };
 
     return (
         <>
         <Head title="Register" />
-        {error!=="" && <ErrorMessagePopup message={error}/>}
+        {error!=="" && <ErrorMessagePopup hideErrorPopup={() => setError("")} message={error}/>}
         <div className="bg-white min-h-screen items-center  flex flex-col-reverse gap-3 md:flex-row">
                         <img src="Frame 427319048 (1).png" className="object-cover md:pt-5 sm:h-full md:h-screen w-full md:w-1/2"/>
 
@@ -73,6 +76,7 @@ export default function Register() {
 
                                Create Account <ArrowRightIcon className="w-5"/>
                             </PrimaryButton>
+                <div className="text-center text-gray-500 hover:underline hover:cursor-pointer text-sm mt-2" onClick={() => router.visit("/login")}>login instead</div>
 
             </div>
         </div>

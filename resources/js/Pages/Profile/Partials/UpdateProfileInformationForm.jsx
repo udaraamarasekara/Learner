@@ -1,27 +1,29 @@
-import InputError from '@/Components/InputError';
-import InputLabel from '@/Components/InputLabel';
-import PrimaryButton from '@/Components/PrimaryButton';
-import TextInput from '@/Components/TextInput';
-import { Transition } from '@headlessui/react';
-import { Link, useForm, usePage } from '@inertiajs/react';
-
+import InputError from "@/Components/InputError";
+import InputLabel from "@/Components/InputLabel";
+import PrimaryButton from "@/Components/PrimaryButton";
+import TextInput from "@/Components/TextInput";
+import { Transition } from "@headlessui/react";
+import { Link, useForm, usePage } from "@inertiajs/react";
+import FileInput from "@/Components/FileInput";
 export default function UpdateProfileInformation({
     mustVerifyEmail,
     status,
-    className = '',
+    className = "",
 }) {
     const user = usePage().props.auth.user;
 
-    const { data, setData, patch, errors, processing, recentlySuccessful } =
+    const { data, setData, post, errors, processing, recentlySuccessful } =
         useForm({
-            name: user.name,
+            user_name: user.user_name,
             email: user.email,
+            whatsapp: user.whatsapp,
+            photo: user.photo,
         });
 
     const submit = (e) => {
         e.preventDefault();
-
-        patch(route('profile.update'));
+        post(route("profile.update") // Important for file uploads
+);
     };
 
     return (
@@ -38,19 +40,19 @@ export default function UpdateProfileInformation({
 
             <form onSubmit={submit} className="mt-6 space-y-6">
                 <div>
-                    <InputLabel htmlFor="name" value="Name" />
+                    <InputLabel htmlFor="user_name" value="Name" />
 
                     <TextInput
-                        id="name"
+                        id="user_name"
                         className="mt-1 block w-full"
-                        value={data.name}
-                        onChange={(e) => setData('name', e.target.value)}
+                        value={data.user_name}
+                        onChange={(e) => setData("user_name", e.target.value)}
                         required
                         isFocused
-                        autoComplete="name"
+                        autoComplete="user_name"
                     />
 
-                    <InputError className="mt-2" message={errors.name} />
+                    <InputError className="mt-2" message={errors.user_name} />
                 </div>
 
                 <div>
@@ -61,20 +63,51 @@ export default function UpdateProfileInformation({
                         type="email"
                         className="mt-1 block w-full"
                         value={data.email}
-                        onChange={(e) => setData('email', e.target.value)}
+                        onChange={(e) => setData("email", e.target.value)}
                         required
-                        autoComplete="username"
+                        autoComplete="user_name"
                     />
 
                     <InputError className="mt-2" message={errors.email} />
                 </div>
+                <div>
+                    <InputLabel htmlFor="whatsapp" value="Whatsapp" />
 
+                    <TextInput
+                        id="whatsapp"
+                        className="mt-1 block w-full"
+                        value={data.whatsapp}
+                        onChange={(e) => setData("whatsapp", e.target.value)}
+                        required
+                        isFocused
+                        autoComplete="whatsapp"
+                    />
+
+                    <InputError className="mt-2" message={errors.whatsapp} />
+                </div>
+
+                <div>
+                    <InputLabel htmlFor="photo" value="photo" />
+
+                  <FileInput
+                            id="photo"
+                            accept="image/*"
+                            multiple={false}
+                            name="photo"
+                            files={data.photo}
+                            className="mt-1 block w-full"
+                            isFocused={true}
+                            onChange={(e) => setData('photo', e.target.files[0])}
+                        />
+
+                    <InputError className="mt-2" message={errors.photo} />
+                </div>
                 {mustVerifyEmail && user.email_verified_at === null && (
                     <div>
                         <p className="mt-2 text-sm text-gray-800">
                             Your email address is unverified.
                             <Link
-                                href={route('verification.send')}
+                                href={route("verification.send")}
                                 method="post"
                                 as="button"
                                 className="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
@@ -83,7 +116,7 @@ export default function UpdateProfileInformation({
                             </Link>
                         </p>
 
-                        {status === 'verification-link-sent' && (
+                        {status === "verification-link-sent" && (
                             <div className="mt-2 text-sm font-medium text-green-600">
                                 A new verification link has been sent to your
                                 email address.
@@ -102,9 +135,7 @@ export default function UpdateProfileInformation({
                         leave="transition ease-in-out"
                         leaveTo="opacity-0"
                     >
-                        <p className="text-sm text-gray-600">
-                            Saved.
-                        </p>
+                        <p className="text-sm text-gray-600">Saved.</p>
                     </Transition>
                 </div>
             </form>
